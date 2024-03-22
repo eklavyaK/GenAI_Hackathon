@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+*.pptx
+*.h5
+*.json
+=======
+*.pptx
+*.h5
+*.json
+>>>>>>> be4354c (commit)
+*.model
