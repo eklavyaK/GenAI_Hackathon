@@ -1,6 +1,6 @@
 # Problem Statement
 
-### Team leader Email : [Eklavya Kumar](eklavyakumarsingh099@gmail.com)
+### Team leader Email : [Eklavya Kumar](eklavyakumarsingh100@gmail.com)
 ## Interactive story telling using Generative AI
 Develop an innovative platform for interactive storytelling that employs AI-driven tools, allowing users to actively shape the plot and characters through their input using use of Intel®️ oneAPI as the primary programming paradigm.
 The aim is to craft captivating visual narratives using advanced AI techniques such as Stable Diffusion or Gen AI models. 
