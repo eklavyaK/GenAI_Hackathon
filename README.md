@@ -56,4 +56,4 @@ To incorporate open source LLM models instead of using ChatGPT API.
 Improve the coherency of the images generated in workflow 2 by incorporating better base images/ developing another way of selecting the base images for each round.
 
 ## Video description:
-![Video](https://www.youtube.com/watch?v=MAmnOYT1qhU)
+[![Video](https://github.com/eklavyaK/GenAI_Hackathon/blob/master/images/Thumbnail.jpg)](https://www.youtube.com/watch?v=MAmnOYT1qhU)
