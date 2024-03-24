@@ -1,0 +1,12 @@
+torch 
+torchvision 
+torchaudio 
+streamlit 
+langchain 
+Ipython 
+huggingface_hub 
+PIL 
+re 
+pathlib 
+transformers 
+diffusers['torch']
