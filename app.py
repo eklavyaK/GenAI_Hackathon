@@ -10,7 +10,7 @@ If a question does not make any sense, or is not factually coherent, explain why
 base = "./base"
 model_dir = "/home/common/data/Big_Data/GenAI"
 model_path = 'meta-llama/Llama-2-7b-chat-hf'
-hf_aut = "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"
+hf_aut = ""
 scene = {"city" : 1, "town" : 1, "urban" : 1, "village" : 3, "rural" : 3, 
          "forest" : 5, "jungle" : 5, "mountain" : 7, "hill" : 7, "sea" : 9, "ocean" : 9, "aqua" : 9, 
          "room" : 11, "house" : 11, "space" : 13, "universe" : 13, "cosmos" : 13}
