@@ -8,9 +8,9 @@ You are a helpful, respectful and honest assistant. Always answer as helpfully a
 If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information."""
 
 base = "./base"
-model_dir = "/home/common/data/Big_Data/GenAI"
+model_dir = "./sd_models"
 model_path = 'meta-llama/Llama-2-7b-chat-hf'
-hf_aut = ""
+hf_aut = "" # put your hugging face authentication token
 scene = {"city" : 1, "town" : 1, "urban" : 1, "village" : 3, "rural" : 3, 
          "forest" : 5, "jungle" : 5, "mountain" : 7, "hill" : 7, "sea" : 9, "ocean" : 9, "aqua" : 9, 
          "room" : 11, "house" : 11, "space" : 13, "universe" : 13, "cosmos" : 13}
@@ -21,7 +21,7 @@ model_ids = [
 
 ## importing Libraries........................................................................................
 
-# pip install torch torchvision torchaudio streamlit langchain Ipython huggingface_hub PIL re pathlib transformers diffusers['torch']
+# pip install torch torchvision torchaudio streamlit langchain Ipython huggingface_hub pillow pathlib transformers diffusers['torch']
 
 import sys
 import re
@@ -39,8 +39,9 @@ import torch.nn as nn
 from PIL import Image
 from pathlib import Path
 
-from langchain import HuggingFacePipeline
-from langchain import PromptTemplate, LLMChain
+from langchain.chains import LLMChain
+from langchain_community.llms import huggingface_pipeline
+from langchain_core.prompts import PromptTemplate
 
 from IPython.display import clear_output
 from IPython.display import Image as IPImage
@@ -273,7 +274,7 @@ class LLM:
                                             top_k = top_k,
                                             max_tokens = max_tokens)
 
-        self.llm = HuggingFacePipeline(pipeline = self.pipeline, model_kwargs = {'temperature': temperature})
+        self.llm = huggingface_pipeline.HuggingFacePipeline(pipeline = self.pipeline, model_kwargs = {'temperature': temperature})
 
     def _load_pipeline(
         self, model_path, torch_dtype, hf_aut, device_map, top_k, max_tokens
@@ -283,7 +284,7 @@ class LLM:
         
         model = AutoModelForCausalLM.from_pretrained(
             model_path,
-            device_map = 'xpu',
+            device_map = device_map,
             torch_dtype = torch_dtype,
             token = hf_aut,
             )
@@ -305,6 +306,7 @@ class LLM:
         
         
     def clean_output(self, text):
+        print("Returning the clean output...")
         text = text['text']
         split = text.split(E_INST)
         if len(split) == 0: return " "
@@ -316,8 +318,10 @@ class LLM:
             return cur
             
     def generate(self, template, text):
+        print("Wrapping the model and making template...")
         prompt = PromptTemplate(template = template, input_variables = ["text"])
         model = LLMChain(prompt = prompt, llm = self.llm)
+        print("Wrapping complete✅")
         return self.clean_output(model.invoke(text))
     
     def check_time(self, text):
@@ -344,7 +348,8 @@ class LLM:
         return self.generate(template_prompt, text)
 
 try:
-    llama = LLM(model_path, hf_aut, top_k = 50, max_tokens = 3000, temperature = 0.1)
+    llama = LLM(model_path, hf_aut, top_k = 50, max_tokens = 3000, temperature = 0.1, device_map = 'cpu')
+    print("llama loaded✅")
 except:
     print("Difficulty loading LLM...\nCan't generate the story now")
     
@@ -500,15 +505,21 @@ def display_text(text):
 	)
 
 model_cache = {}
+model_cache[(sd_model, 'auto')] = Img2ImgModel(sd_model, device = 'auto') 
 
 if submit_g:
 	display_text("Generating story for you...😊")
+	display_text("Please be patient. It takes some time to run large models...")
+	print("Generating story...")
 	story = llama.get_story(story_description)
+	print("Story generated✅")
 	partial_stories = split_paragraphs(story)
 	for i, parts in enumerate(partial_stories):
-		model_key = (sd_model, "xpu")
+		model_key = (sd_model, "cpu")
+		print("checking presence of stable diffusion model....")
 		if model_key not in model_cache:
-			model_cache[model_key] = Img2ImgModel(sd_model, device = "xpu")
+			model_cache[model_key] = Img2ImgModel(sd_model, device = "cpu")
+		print("stable diffusion model loaded✅")
 		prompt = parts
 		model = model_cache[model_key]
 		if not prompt:
@@ -516,10 +527,12 @@ if submit_g:
 		display_text(prompt) 
 		try:
 			start_time = time.time()
+			print("Generating image for the prompt...")
 			image = model.generate_images(prompt = prompt,)
+			print("Image successfully generated✅")
 			display_image(image)
 		except:
 			display_text("An Error Occurred...☠️")
 
 if submit_c:
-    st.write("Generate a new story")
+    st.write("Cleared...✅")
