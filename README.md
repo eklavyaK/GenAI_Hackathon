@@ -51,14 +51,14 @@ The steps of the overall workflow is as follows:
 The app is yet to be deployed. It is difficult to find free cloud provider which could run the app due to it's high runtime space complexity. The models (Llama-2 and stable diffusion) combined take around 15 GB of memory. Link of the app will be updated here as soon as we deploy our work.
 
 ### Example of some base images used:
-Base image corresponding to surrounding of a village at night
+Base image corresponding to surrounding of a village at night<br>
 ![image 1](https://github.com/eklavyaK/GenAI_Hackathon/blob/master/base/4.jpg)
 
-Base image corresponding to surrounding of a forest in day
+Base image corresponding to surrounding of a forest in day<br>
 ![image 2](https://github.com/eklavyaK/GenAI_Hackathon/blob/master/base/5.jpg)
 
 ## An example story generated using the above workflow:
-**Prompt by the user** : A astrounaut travelling through space in his spacecraft
+**Prompt by the user** : A astrounaut travelling through space in his spacecraft <br>
 ![image 1](https://github.com/eklavyaK/GenAI_Hackathon/blob/master/images/1.png)
 ![image 1](https://github.com/eklavyaK/GenAI_Hackathon/blob/master/images/2.png)
 ![image 1](https://github.com/eklavyaK/GenAI_Hackathon/blob/master/images/3.png)
