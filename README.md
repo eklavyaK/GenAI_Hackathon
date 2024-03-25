@@ -68,7 +68,7 @@ Base image corresponding to surrounding of a forest in day<br>
 
 ## Future Scope:
 Use of better LLMs and Image generators for accurate image generation. <br>
-Optimization of code to for easy deployment of the streamlit app. <br>
+Optimization of code for easy deployment of the streamlit app. <br>
 Better prompt engineering to exploit features of the models in better way.
 
 ## Video description:
