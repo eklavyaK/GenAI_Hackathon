@@ -47,7 +47,7 @@ The steps of the overall workflow is as follows:
 5. Each paragraph is sent to the LLM model again to guess the background scene (city, village, sea, space, forest, room etc) of the scene depicted in the paragraph, by default we take scene as village. Further based the response we search for the scene in the output of the LLM. After we make another query from the LLM about when (day or night) the scene is taking place, by default we take time as day. Now by combining these two responses a base image for the current scene is selected.
 6. **Retrieved Base image & generated prompt** is sent to the image to image Stable diffusion model to generate the final image illustration for each scene of the story seperately.
 
-## Streamlit App
+### Streamlit App
 The app is yet to be deployed. It is difficult to find free cloud provider which could run the app due to it's high runtime space complexity. The models (Llama-2 and stable diffusion) combined take around 15 GB of memory. Link of the app will be updated here as soon as we deploy our work.
 
 ### Example of some base images used:
