@@ -64,7 +64,6 @@ Base image corresponding to surrounding of a forest in day<br>
 ![image 1](https://github.com/eklavyaK/GenAI_Hackathon/blob/master/images/3.png)
 ![image 1](https://github.com/eklavyaK/GenAI_Hackathon/blob/master/images/4.png)
 ![image 1](https://github.com/eklavyaK/GenAI_Hackathon/blob/master/images/5.png)
-![image 1](https://github.com/eklavyaK/GenAI_Hackathon/blob/master/images/5.png)
 
 ## Future Scope:
 Use of better LLMs and Image generators for accurate image generation. <br>
